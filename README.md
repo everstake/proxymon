@@ -24,7 +24,7 @@ git clone https://github.com/everstake/proxymon.git /opt/colinproxy
 Please open telegram application and tap "new channel". Create the public channel.  
 After that you need to create the telegram bot using BotFather. When you create the bot you will receive the botkey (token to access the HTTP API). After you need start the bot tapping "start".  
 
-###Configuration
+### Configuration  
 At first you need to configure cleos.sh. Set path to folder with cleos binary file NODEOSBINDIR variable.  
 Further you can set variables in config.ini.  
 Set the botkey, chanel name and other variables.
