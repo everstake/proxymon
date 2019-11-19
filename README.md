@@ -1,4 +1,4 @@
-## Proxymon script  
+## Proxymon
 
 ### Requirements:  
 1. jq 
