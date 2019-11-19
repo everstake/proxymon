@@ -6,7 +6,7 @@
 3. telegram channel
 
 ### Installation
-#### Install jq.  
+#### Install jq  
 ```
 sudo apt-get install jq  
 ```
