@@ -1,8 +1,8 @@
 ## Proxymon script  
 
 ### Requirements:  
-1. jq.  
-2. eos api node.  
+1. jq 
+2. eos api node endpoint
 3. telegram channel
 
 ### Installation
