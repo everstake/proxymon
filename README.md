@@ -1,4 +1,7 @@
 ## Proxymon
+This simple telegram bot notifies users when the balance of their EOS account(s) gets less than 5 EOS through direct messages on Telegram. We are going to add additional features such as configurable thresholds for specific accounts and alert notifications.
+
+Working example: https://t.me/colinproxybot
 
 ### Requirements:  
 1. jq 
