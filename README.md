@@ -2,7 +2,7 @@
 
 ### Requirements:  
 1. jq 
-2. eos api node endpoint
+2. eos api node (cleos)
 3. telegram channel
 
 ### Installation
@@ -12,12 +12,12 @@ sudo apt-get install jq
 ```
 #### Make scripts dir  
 ```
-sudo mkdir /opt/colinproxy  
-sudo chown myuser:myuser /opt/colinproxy  
+sudo mkdir /opt/proxymon 
+sudo chown myuser:myuser /opt/proxymon
 ```
 #### Clone git repository to scripts dir  
 ```
-git clone https://github.com/everstake/proxymon.git /opt/colinproxy  
+git clone https://github.com/everstake/proxymon.git /opt/proxymon
 ```
 #### Create telegram chanel
 Just open telegram application and tap "new channel". Create the public channel.  
