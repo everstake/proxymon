@@ -2,14 +2,13 @@
 
 ### Requirements:  
 1. jq.  
-2. EOS node.  
-3. Telegram chanel
-4. Telegram bot
+2. eos api node.  
+3. telegram channel
 
 ### Installation
 #### Install jq.  
 ```
-apt-get install jq  
+sudo apt-get install jq  
 ```
 #### Make scripts dir  
 ```
@@ -21,13 +20,25 @@ sudo chown myuser:myuser /opt/colinproxy
 git clone https://github.com/everstake/proxymon.git /opt/colinproxy  
 ```
 #### Create telegram chanel
-Please open telegram application and tap "new channel". Create the public channel.  
-After that you need to create the telegram bot using BotFather. When you create the bot you will receive the botkey (token to access the HTTP API). After you need start the bot tapping "start".  
+Just open telegram application and tap "new channel". Create the public channel.  
+After that you need to create the telegram bot using BotFather. When you created bot you will receive the botkey (token to access the HTTP API), then you need start the bot tapping "start".  
 
 ### Configuration  
-At first you need to configure cleos.sh. Set path to folder with cleos binary file NODEOSBINDIR variable.  
-Further you can set variables in config.ini.  
-Set the botkey, chanel name and other variables.
-If you need to check only your account you cat set the YOURACCOUNT variable with you account name.  
-You can use supervisor to start this proxymon.sh.  
+Set variables in config.ini:
 
+```
+PROXY_ACC=exampleacc
+PROXY_SCOPE=exampleacc
+PROXY_TABLE=examplebp
+TRESHOLD=5
+LIMIT=1000
+YOURACCOUNT=
+CLEOS=/opt/dir_with_sleos_sh_script/cleos.sh
+CHATID=@nameofchat
+BOTNUMBER=1111111111:xxxxxxxxxxxxxxxxxxxxxxxxx
+```
+
+where TRESHOLD minimun EOS on balance.
+
+If you need to check only your account you cat set the YOURACCOUNT variable with you account name.  
+You can use supervisor with this bot.  
