@@ -8,11 +8,13 @@ PROXY_TABLE=$(cat ${PWD}/config.ini | grep -v "#" | grep PROXY_TABLE | awk -F '=
 TRESHOLD=$(cat ${PWD}/config.ini | grep -v "#" | grep TRESHOLD | awk -F '=' '{print $2}')
 LIMIT=$(cat ${PWD}/config.ini | grep -v "#" | grep LIMIT | awk -F '=' '{print $2}')
 YOURACCOUNT=$(cat ${PWD}/config.ini | grep -v "#" | grep YOURACCOUNT | awk -F '=' '{print $2}')
+TABLEACC=$(cat ${PWD}/config.ini | grep -v "#" | grep TABLEACC | awk -F '=' '{print $2}')
+TABLEFUND=$(cat ${PWD}/config.ini | grep -v "#" | grep TABLEFUND | awk -F '=' '{print $2}')
 if [[ -z "$YOURACCOUNT" ]]
 then
-        DD=$($CLEOS get table $PROXY_ACC $PROXY_SCOPE $PROXY_TABLE  -l $LIMIT | jq '.rows' | jq 'map({ (.account_name): .total_eos }) | add'| awk -F: '{print $1 $2}'| sed  -e 's/"//g' |sed  -e 's/,//g'|sed  -e 's/EOS//g'|sed -e 's/{//g'| sed -e 's/}//g'| awk -v t="$TRESHOLD" '/^$/ {next}; { if ($2<=t) print $1" "$2" EOS\n"}')
+        DD=$($CLEOS get table $PROXY_ACC $PROXY_SCOPE $PROXY_TABLE  -l $LIMIT | jq '.rows' | jq "map({ (${TABLEACC}): ${TABLEFUND} })| add"| awk -F: '{print $1 $2}'| sed  -e 's/"//g' |sed  -e 's/,//g'|sed  -e 's/EOS//g'|sed -e 's/{//g'| sed -e 's/}//g'| awk -v t="$TRESHOLD" '/^$/ {next}; { if ($2<=t) print $1" "$2" EOS\n"}')
 else
-        DD=$($CLEOS get table $PROXY_ACC $PROXY_SCOPE $PROXY_TABLE  -l $LIMIT | jq '.rows' | jq 'map({ (.account_name): .total_eos }) | add'| awk -F: '{print $1 $2}'| sed  -e 's/"//g' |sed  -e 's/,//g'|sed  -e 's/EOS//g'|sed -e 's/{//g'| sed -e 's/}//g'| awk -v t="$TRESHOLD" '/^$/ {next}; { if ($2<=t) print $1" "$2 " EOS\n"}'|grep $YOURACCOUNT)
+        DD=$($CLEOS get table $PROXY_ACC $PROXY_SCOPE $PROXY_TABLE  -l $LIMIT | jq '.rows' | jq "map({ (${TABLEACC}): ${TABLEFUND} }) | add"| awk -F: '{print $1 $2}'| sed  -e 's/"//g' |sed  -e 's/,//g'|sed  -e 's/EOS//g'|sed -e 's/{//g'| sed -e 's/}//g'| awk -v t="$TRESHOLD" '/^$/ {next}; { if ($2<=t) print $1" "$2 " EOS\n"}'|grep $YOURACCOUNT)
 fi
 curl -s -X POST https://api.telegram.org/bot$BOTNUMBER/sendMessage -d chat_id=$CHATID -d text="Treshold <= $TRESHOLD EOS $(echo -e "%0A%0A")$DD"
 }

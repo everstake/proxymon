@@ -33,6 +33,8 @@ Set variables in config.ini:
 PROXY_ACC=exampleacc
 PROXY_SCOPE=exampleacc
 PROXY_TABLE=examplebp
+TABLEACC=exampletable
+TABLEFUND=exampletable
 TRESHOLD=5
 LIMIT=1000
 YOURACCOUNT=
